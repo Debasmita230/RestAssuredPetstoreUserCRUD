@@ -5,8 +5,9 @@
     <classes>
       <class name="com.api.tests.UserCRUDTest">
         <methods>
-          <include name="testGetUser"/>
+          <include name="testDeleteUser"/>
           <include name="setup"/>
+          <include name="testUpdateUser"/>
         </methods>
       </class> <!-- com.api.tests.UserCRUDTest -->
     </classes>

@@ -38,11 +38,11 @@ public class UserCRUDTest extends BaseTest{
 		         .statusCode(200)
 		         .extract().response();
 		
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 
 		         
 		Assert.assertEquals(response.jsonPath().getString("message"), "1001");
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 	}
 	@Test(priority=2)
     public void testGetUser() throws InterruptedException {
@@ -51,6 +51,8 @@ public class UserCRUDTest extends BaseTest{
     			.pathParam("username", username)
     			.when()
     			.get("/user/{username}");
+    	
+    	Thread.sleep(5000);
     			
     			int attempts = 1;
     		    while (response.statusCode() == 404 && attempts <= 3) {
@@ -67,7 +69,7 @@ public class UserCRUDTest extends BaseTest{
         Assert.assertEquals(response.statusCode(), 200, "User was not found even after retry!");
     	Assert.assertEquals(response.jsonPath().getString("username"), username);
     	Assert.assertEquals(response.jsonPath().getString("email"),"debmishra23@gmail.com");
-    	Thread.sleep(1000);
+    	Thread.sleep(5000);
     			
     }
 	@Test(priority=3)
@@ -94,7 +96,7 @@ public class UserCRUDTest extends BaseTest{
 
 	    System.out.println("Update response:");
 	    updateResponse.prettyPrint();
-	    Thread.sleep(8000);
+	    Thread.sleep(5000);
 
 	   
 	    Response response = given()
@@ -113,7 +115,7 @@ public class UserCRUDTest extends BaseTest{
 	    System.out.println("First name after update: " + updatedFirstName);
 
 	    Assert.assertNotNull(updatedFirstName, "API did not return updated firstName field!");
-	    Thread.sleep(1000);
+	    Thread.sleep(5000);
 				
        }
 	@Test(priority = 4)
@@ -130,7 +132,7 @@ public class UserCRUDTest extends BaseTest{
 
         deleteResponse.prettyPrint();
 
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         Response getResponse = given()
                 .pathParam("username", username)
         .when()
